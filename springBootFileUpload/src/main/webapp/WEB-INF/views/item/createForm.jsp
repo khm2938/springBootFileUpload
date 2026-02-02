@@ -68,15 +68,14 @@
         
         <div class="form-group">
             <label for="description">상품이미지설명</label>
-            <textarea id="description" name="description" row="5" cols="20">
-            </textarea>
+            <textarea id="description" name="description" rows="5" cols="20"></textarea>
         </div>
         
         <div class="btn-area">
             <button type="button" class="btn btn-back" onclick="history.back();">뒤로가기</button>
             <button type="reset" class="btn btn-cancel">취소</button>
             <button type="submit" class="btn btn-submit">등록하기</button>
-            <a href="/item/itemList" class="btn btn-list">목록</a>
+            <a href="/item/list" class="btn btn-list">목록</a>
         </div>
         
     </form>

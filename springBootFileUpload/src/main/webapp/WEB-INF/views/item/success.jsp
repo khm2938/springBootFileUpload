@@ -40,7 +40,7 @@
     
     <div class="btn-area">
         <a href="/item/createForm" class="btn btn-main">상품등록</a>
-        <a href="/item/itemList" class="btn btn-outline">상품리스트</a>
+        <a href="/item/list" class="btn btn-outline">상품리스트</a>
     </div>
 </div>
 

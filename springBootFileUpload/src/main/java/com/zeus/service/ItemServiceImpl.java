@@ -22,33 +22,33 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Item read(Item item) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return itemMapper.read(item);
 	}
 
 	@Override
+	@Transactional
 	public int update(Item item) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return itemMapper.update(item);
 	}
 
 	@Override
+	@Transactional
 	public int delete(Item item) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return itemMapper.delete(item);
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Item> list() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return itemMapper.list();
 	}
 
 	@Override
 	public String getPicture(Item item) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		String url = itemMapper.getPicture(item);
+		return url;
 	}
 
 }

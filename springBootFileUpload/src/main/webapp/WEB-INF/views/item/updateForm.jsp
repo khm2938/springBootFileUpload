@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시글 수정</title>
+<title>상품 수정</title>
+
 <style>
-/* 전체 배경 및 폰트 */
 body {
 	font-family: 'Malgun Gothic', sans-serif;
 	background-color: #f8f9fa;
@@ -18,7 +19,6 @@ body {
 	margin: 0;
 }
 
-/* 중앙 컨테이너 */
 .container {
 	background: #ffffff;
 	padding: 40px;
@@ -37,7 +37,6 @@ h2 {
 	padding-bottom: 15px;
 }
 
-/* 입력 필드 레이아웃 */
 .form-group {
 	margin-bottom: 20px;
 }
@@ -49,35 +48,25 @@ label {
 	color: #495057;
 }
 
-input[type="text"], textarea {
+input[type="text"], input[type="number"], textarea {
 	width: 100%;
 	padding: 12px;
 	border: 1px solid #ced4da;
 	border-radius: 6px;
 	box-sizing: border-box;
-	transition: border-color 0.3s;
-}
-
-input[type="text"]:focus, textarea:focus {
-	outline: none;
-	border-color: #4dabf7;
-	box-shadow: 0 0 0 3px rgba(77, 171, 247, 0.2);
 }
 
 textarea {
-	height: 180px;
+	height: 160px;
 	resize: none;
 }
 
-/* 버튼 영역 스타일 통일 */
 .btn-area {
 	display: flex;
-	justify-content: space-between;
 	gap: 10px;
 	margin-top: 30px;
 }
 
-/* 공통 버튼 스타일 */
 .btn {
 	flex: 1;
 	padding: 12px;
@@ -88,61 +77,57 @@ textarea {
 	cursor: pointer;
 	text-align: center;
 	text-decoration: none;
-	transition: opacity 0.2s;
 }
 
-.btn:hover {
-	opacity: 0.8;
-}
-
-.btn-back {
-	background-color: #adb5bd;
-	color: white;
-} /* 뒤로가기 - 회색 */
 .btn-submit {
 	background-color: #007bff;
 	color: white;
-} /* 전송 - 파란색 */
-.btn-cancel {
-	background-color: #ffc107;
-	color: #212529;
-} /* 취소 - 노란색 */
+}
+
 .btn-list {
-	background-color: #343a40;
+	background-color: #6c757d;
 	color: white;
-} /* 목록 - 검은색 */
+}
 </style>
 </head>
+
 <body>
 
 	<div class="container">
-		<h2>${board.no}게시글 수정</h2>
-		<form action="/board/insert" method="post">
+		<h2>상품 수정</h2>
+
+		<form action="/item/update" method="post" enctype="multipart/form-data">
+
 			<div class="form-group">
-				<label for="no">게시글번호</label> <input type="text" id="title"
-					name="no" value="${board.no}" readonly>
+				<label>상품 ID</label>
+				<input type="text" name="id" value="${item.id}" readonly>
 			</div>
 
 			<div class="form-group">
-				<label for="writer">작성자</label> <input type="text" id="writer"
-					name="writer" value="${board.writer}" required>
-			</div>
-			
-			<div class="form-group">
-				<label for="content">제목</label>
-				<input type="text" id="title" name="title" value="${board.title}" required>
+				<label>상품명</label>
+				<input type="text" name="name" value="${item.name}" required>
 			</div>
 
 			<div class="form-group">
-				<label for="content">내용</label>
-				<textarea id="content" name="content"> ${board.content}</textarea>
+				<label>가격</label>
+				<input type="number" name="price" value="${item.price}" required>
+			</div>
+
+			<div class="form-group">
+				<label>상품 설명</label>
+				<textarea name="description">${item.description}</textarea>
+			</div>
+
+			<div class="form-group">
+				<label>상품 이미지 변경</label>
+				<input type="file" name="picture">
 			</div>
 
 			<div class="btn-area">
-            <a href="/board/boardList" class="btn btn-cancel">게시판리스트</a>
-            <button type="submit" class="btn btn-cancel">수정전송</button>
-            <button type="reset" class="btn btn-cancel">게시판취소</button>
-        </div>
+				<a href="/item/list" class="btn btn-list">목록</a>
+				<button type="submit" class="btn btn-submit">수정 완료</button>
+			</div>
+
 		</form>
 	</div>
 
